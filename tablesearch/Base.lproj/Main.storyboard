@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fvh-Us-7HR">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Table View Controller-->
+        <scene sceneID="fqI-Nu-iMX">
+            <objects>
+                <tableViewController id="2Qg-lL-cs2" customClass="TableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5Fu-qX-9VQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="bpp-aW-pah">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="2Qg-lL-cs2" id="8kp-Yk-dWg"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="TMTPatientCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TMTPatientCell" rowHeight="44" id="c3S-sh-tdA" customClass="TableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c3S-sh-tdA" id="tTE-aA-6jg">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFD-Sk-l2u">
+                                            <rect key="frame" x="282" y="11" width="20" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRY-0C-LGn">
+                                            <rect key="frame" x="347" y="11" width="31" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Birthdate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-Cc-kPn">
+                                            <rect key="frame" x="423" y="11" width="71" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ssId" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUF-bQ-jEI">
+                                            <rect key="frame" x="502" y="11" width="90" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firstname Lastname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ci1-Uj-3v4">
+                                            <rect key="frame" x="16" y="11" width="211" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ageLabel" destination="NRY-0C-LGn" id="9Gu-2m-kQK"/>
+                                    <outlet property="birthdateLabel" destination="8fm-Cc-kPn" id="N0U-8k-81d"/>
+                                    <outlet property="fullNameLabel" destination="Ci1-Uj-3v4" id="bfI-Dn-chR"/>
+                                    <outlet property="genderLabel" destination="nFD-Sk-l2u" id="zOu-OK-dUC"/>
+                                    <outlet property="socialSecurityIdentifierLabel" destination="wUF-bQ-jEI" id="4Xr-H8-h7v"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Qg-lL-cs2" id="1gF-R5-Jyn"/>
+                            <outlet property="delegate" destination="2Qg-lL-cs2" id="j0d-Zb-Kb4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="svI-xR-jTh"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="3Au-ea-ZKU" id="xMf-E4-e4u"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CT6-ff-Evc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="3Au-ea-ZKU">
+                    <connections>
+                        <outlet property="delegate" destination="2Qg-lL-cs2" id="XIG-0i-AbX"/>
+                        <outlet property="searchBar" destination="bpp-aW-pah" id="Cbm-qk-zFz"/>
+                        <outlet property="searchContentsController" destination="2Qg-lL-cs2" id="UrS-1q-txK"/>
+                        <outlet property="searchResultsDataSource" destination="2Qg-lL-cs2" id="67E-RK-Q8v"/>
+                        <outlet property="searchResultsDelegate" destination="2Qg-lL-cs2" id="6aP-i9-mxx"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1418" y="409"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dUh-TM-zzc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fvh-Us-7HR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E9H-kk-0Zc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Qg-lL-cs2" kind="relationship" relationship="rootViewController" id="Beg-o6-xdJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FXF-3G-nkV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="606" y="409"/>
+        </scene>
+    </scenes>
+</document>
