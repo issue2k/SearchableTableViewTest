@@ -10,6 +10,13 @@
 #import "TableViewCell.h"
 #import "TMTPatient.h"
 
+typedef enum {
+    searchScopeFullName = 0,
+    searchScopeLastName = 1,
+    searchScopeFirstName = 2,
+    searchScopeSocialSecurityIdentifier = 3
+} TMTPatientSearchScope;
+
 @interface TableViewController ()
 
 @property (strong, nonatomic) NSMutableArray *data;
@@ -111,12 +118,20 @@
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = searchController.searchBar.text;
-    [self filterDataForSearchString:searchString];
+    TMTPatientSearchScope scope = (TMTPatientSearchScope)patientSearchController.searchBar.selectedScopeButtonIndex;
+    [self filterDataForSearchString:searchString scope:scope];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     [self.patientSearchController setActive:NO];
     [self.tableView reloadData];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+    NSLog(@"Selected scope: %@", @(selectedScope));
+    NSString *searchString = searchBar.text;
+    TMTPatientSearchScope scope = (TMTPatientSearchScope)patientSearchController.searchBar.selectedScopeButtonIndex;
+    [self filterDataForSearchString:searchString scope:scope];
 }
 
 #pragma mark - Search bar helpers
@@ -130,13 +145,30 @@
     patientSearchController.searchBar.delegate = self;
     patientSearchController.dimsBackgroundDuringPresentation = NO;
     patientSearchController.hidesNavigationBarDuringPresentation = YES;
+    patientSearchController.searchBar.scopeButtonTitles = @[
+        @"Full name",
+        @"Last name",
+        @"First name",
+        @"Social identifier"
+    ];
     
     self.definesPresentationContext = YES;
 }
 
-- (void)filterDataForSearchString:(NSString *)searchString {
+- (void)filterDataForSearchString:(NSString *)searchString scope:(TMTPatientSearchScope)searchScope {
     if(![searchString isEqualToString:@""]) {
         NSString *searchAttribute = @"fullName"; // Can be extended to filter multiple attributes (if they need)
+        
+        if(searchScope == searchScopeSocialSecurityIdentifier) {
+            searchAttribute = @"socialSecurityIdentifier";
+        } else if(searchScope == searchScopeLastName) {
+            searchAttribute = @"lastName";
+        } else if(searchScope == searchScopeFirstName) {
+            searchAttribute = @"firstName";
+        }
+        
+        NSLog(@"Search attribute: %@", searchAttribute);
+        
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.%@ contains[c] %@", searchAttribute, searchString];
         filteredData = [NSMutableArray arrayWithArray:[data filteredArrayUsingPredicate:predicate]];
         [self.tableView reloadData];
